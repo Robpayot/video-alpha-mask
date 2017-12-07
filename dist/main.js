@@ -117,7 +117,7 @@ var VideoAlphaMask = function () {
 		value: function resizeHandler() {
 
 			this.width = Math.min(window.innerWidth * 0.5 * 2, 1400); // x2 display
-			this.height = this.controller.size + 70; // marge
+			this.height = this.controller.size + 80; // marge
 
 			// Video size
 			this.videoWidth = this.width;
