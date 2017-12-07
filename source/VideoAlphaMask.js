@@ -109,7 +109,7 @@ class VideoAlphaMask {
 
 
 		this.width = Math.min(window.innerWidth * 0.5 * 2, 1400); // x2 display
-		this.height = this.controller.size + 30; // marge
+		this.height = this.controller.size + 70; // marge
 
 		// Video size
 		this.videoWidth = this.width;
