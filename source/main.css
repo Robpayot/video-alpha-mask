@@ -28,10 +28,14 @@ body {
 	bottom: 10vh;
 	left: 50%;
 	transform: translateX(-50%);
+	text-align: center;
+
+}
+
+.github__content {
 	display: flex;
 	align-items: center;
 	text-transform: uppercase;
-
 }
 
 .github svg {
@@ -43,4 +47,8 @@ body {
 
 .github a {
 	color: inherit;
+}
+
+.github span:last-child {
+	text-transform: none;
 }

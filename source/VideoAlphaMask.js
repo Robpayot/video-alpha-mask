@@ -35,14 +35,14 @@ class VideoAlphaMask {
 
 	setGui() {
 		this.controller = {
-			size: 100,
+			size: 150,
 			color: '#000000',
 			background: '#FFFFFF'
 		};
 
 		const gui = new dat.GUI();
 
-		gui.add(this.controller, 'size', 0, 200).onChange(this.onChangeSize);
+		gui.add(this.controller, 'size', 0, 300).onChange(this.onChangeSize);
 		gui.addColor(this.controller, 'color').onChange(this.onChangeColor);
 		gui.addColor(this.controller, 'background').onChange(this.onChangeBackground);
 		gui.open();
