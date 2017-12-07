@@ -24,7 +24,8 @@ var VideoAlphaMask = function () {
 
 		this.ui = {
 			canvas: document.querySelector('.canvas'),
-			canvasAlphaBuffer: document.querySelector('.canvas-alpha-buffer')
+			canvasAlphaBuffer: document.querySelector('.canvas-alpha-buffer'),
+			svgGithub: document.querySelector('.github svg')
 		};
 
 		this.ctx = this.ui.canvas.getContext('2d');
@@ -63,8 +64,7 @@ var VideoAlphaMask = function () {
 		key: 'onChangeColor',
 		value: function onChangeColor(val) {
 
-			this.controller.color = val;
-			document.body.style.color = val;
+			this.controller.color = this.ui.svgGithub.style.fill = document.body.style.color = val;
 		}
 	}, {
 		key: 'onChangeBackground',
@@ -151,7 +151,7 @@ var VideoAlphaMask = function () {
 			this.imageAlpha = this.ctxAlphaBuffer.getImageData(0, 0, this.videoWidth, this.videoHeight / 2); // --> top part of video
 			this.imageData = this.imageAlpha.data;
 			this.alphaData = this.ctxAlphaBuffer.getImageData(0, this.videoHeight / 2, this.videoWidth, this.videoHeight / 2).data; // --> bottom part 50/50
-			// r.p : We select the second half
+			// We select the second half
 			// we apply alpha
 			this.imageDataLenght = this.imageData.length; // --> cached data for perf
 			for (var i = 3; i < this.imageDataLenght; i += 4) {

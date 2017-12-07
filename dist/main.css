@@ -1,5 +1,6 @@
 body {
 	font-family: Lato;
+	margin: 0;
 }
 
 .container {
@@ -27,4 +28,19 @@ body {
 	bottom: 10vh;
 	left: 50%;
 	transform: translateX(-50%);
+	display: flex;
+	align-items: center;
+	text-transform: uppercase;
+
+}
+
+.github svg {
+	width: 20px;
+	display: inline-block;
+	vertical-align: middle;
+	margin: 0 5px;
+}
+
+.github a {
+	color: inherit;
 }
