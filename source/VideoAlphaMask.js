@@ -7,7 +7,8 @@ class VideoAlphaMask {
 		this.resizeHandler = this.resizeHandler.bind(this);
 		this.onKeyPress = this.onKeyPress.bind(this);
 		this.onKeyDown = this.onKeyDown.bind(this);
-		this.changeSize = this.changeSize.bind(this);
+		this.onChangeSize = this.onChangeSize.bind(this);
+		this.onChangeColor = this.onChangeColor.bind(this);
 
 		
 		// a small GUI
@@ -21,12 +22,10 @@ class VideoAlphaMask {
 			canvasAlphaBuffer: document.querySelector('.canvas-alpha-buffer'),
 		};
 
-		this.video = document.querySelector('.video');
-
 		this.ctx = this.ui.canvas.getContext('2d');
 		this.ctxAlphaBuffer = this.ui.canvasAlphaBuffer.getContext('2d');
 
-		// this.setAlphaVideo();
+		this.setAlphaVideo();
 		this.resizeHandler();
 
 		this.events();
@@ -36,28 +35,41 @@ class VideoAlphaMask {
 	setGui() {
 		this.controller = {
 			size: 100,
-			color: 'black'
+			color: '#000000',
+			background: '#FFFFFF'
 		};
 
 		const gui = new dat.GUI();
 
-		gui.add(this.controller, 'size', 0, 200).onChange(this.changeSize);
+		gui.add(this.controller, 'size', 0, 200).onChange(this.onChangeSize);
+		gui.addColor(this.controller, 'color').onChange(this.onChangeColor);
+		gui.addColor(this.controller, 'background').onChange(this.onChangeBackground);
 		gui.open();
 	}
 
-	changeSize(val) {
+	onChangeSize(val) {
 
 		this.controller.size = val;
 		this.resizeHandler();
 
 	}
 
+	onChangeColor(val) {
+
+		this.controller.color = val;
+		document.body.style.color = val;
+	}
+
+	onChangeBackground(val) {
+
+		document.body.style.backgroundColor = val;
+	}
+
 	setAlphaVideo() {
 
 		this.video = document.createElement('video');
 
-
-		this.video.src = 'http://www.robinpayot.com/videos/glitch-text.mp4';
+		this.video.src = 'dist/video-alpha.mp4';
 		this.video.autoplay = true;
 		this.video.loop = true;
 		this.video.muted = true;
@@ -89,7 +101,6 @@ class VideoAlphaMask {
 	onKeyDown(e) {
 		if (e.keyCode === 8 ) {
 			this.text = this.text.slice(0,-1);
-			return false;
 		}
 	}
 
@@ -139,20 +150,17 @@ class VideoAlphaMask {
 		for (let i = 3; i < this.imageDataLenght; i += 4) { // why 3 and 4 ? RGB ?
 			this.imageData[i] = this.alphaData[i - 1];
 		}
-		// this.ctxAlphaBuffer.restore();
 
-		this.ctx.beginPath(); // avoid Drop fps
+		this.ctx.beginPath(); 
 
 		this.ctx.fillStyle = this.controller.color;
 		this.ctx.putImageData(this.imageAlpha, 0, 0, 0, 0, this.width, this.height);
 		this.ctx.globalCompositeOperation = 'source-in';
 
-		// old
 		this.ctx.font = this.font;
 		this.ctx.textAlign = 'center';
 		this.ctx.fillText(this.text, this.width / 2, this.height / 2 + this.controller.size / 2); // First Text
 		this.ctx.font = this.font;
-		// this.ctx.restore();
 
 	}
 }
