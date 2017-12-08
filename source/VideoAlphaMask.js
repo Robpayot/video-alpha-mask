@@ -34,7 +34,7 @@ class VideoAlphaMask {
 
 		// a small GUI for controls
 		this.controller = {
-			size: window.innerWidth > 720 : 150 ? 50,
+			size: window.innerWidth > 720 ? 150 : 50,
 			color: '#000000',
 			background: '#FFFFFF',
 			clear: () => {

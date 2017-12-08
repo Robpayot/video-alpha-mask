@@ -42,7 +42,7 @@ var VideoAlphaMask = function () {
 
 			// a small GUI for controls
 			this.controller = {
-				size: 150,
+				size: window.innerWidth > 720 ? 150 : 50,
 				color: '#000000',
 				background: '#FFFFFF',
 				clear: function clear() {
