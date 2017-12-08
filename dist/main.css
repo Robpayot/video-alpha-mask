@@ -7,8 +7,8 @@ body {
 	width: 100%;
 	height: 100vh;
 	display: flex;
-	justify-content: center;
 	align-items: center;
+justify-content: center;
 }
 
 .canvas {
@@ -33,13 +33,6 @@ body {
 
 }
 
-.github__content {
-	display: flex;
-	justify-content-center;
-	align-items: center;
-	text-transform: uppercase;
-}
-
 .github svg {
 	width: 20px;
 	display: inline-block;
@@ -53,4 +46,11 @@ body {
 
 .github span:last-child {
 	text-transform: none;
+}
+
+.github__content {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-transform: uppercase;
 }
