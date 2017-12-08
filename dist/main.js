@@ -155,7 +155,6 @@ var VideoAlphaMask = function () {
 			this.ctx.clearRect(0, 0, this.ui.canvas.width, this.ui.canvas.height);
 
 			// alpha video
-			this.ctxAlphaBuffer.beginPath();
 			// draw images per images in our canvas Buffer
 			this.ctxAlphaBuffer.drawImage(this.video, 0, 0, this.videoWidth, this.videoHeight);
 			// get datas of image
@@ -170,7 +169,6 @@ var VideoAlphaMask = function () {
 				this.imageAlpha.data[i] = this.alphaData[i - 1];
 			}
 
-			this.ctx.beginPath();
 			this.ctx.putImageData(this.imageAlpha, 0, 0, 0, 0, this.width, this.height); // draw Image in the golbal canvas
 			this.ctx.globalCompositeOperation = 'source-in'; // use a source-in composition for mask
 
